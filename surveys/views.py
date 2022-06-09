@@ -11,6 +11,10 @@ from surveys.models import Survey
 import numpy as np
 from scipy.fft import fft, ifft, fftfreq
 
+def home(request):
+    return render(request, 'home.html', {
+    })
+
 class SurveyFillView(TemplateView, FormView):
     success_url = reverse_lazy('filled_success')
     template_name = "survey_form.html"

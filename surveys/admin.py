@@ -8,6 +8,5 @@ from surveys.models import Survey, Patient,Diagnosis
 class SurveytAdmin(admin.ModelAdmin):
     pass
 
-
 admin.site.register(Patient)
 admin.site.register(Diagnosis)
