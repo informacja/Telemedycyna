@@ -94,13 +94,9 @@ class WavFileDetailsView(TemplateView):
         N = nparrrayyy.shape[0]
         yf = fft(nparrrayyy)
         xf = fftfreq(N, 1/samplerate)[:N//2]
-  
-
-
 
         context['data_labels_fft'] = np.around(xf, decimals=2).tolist()
         context['data_fft'] = (2.0/N * np.abs(yf[0:N//2])).tolist()
-
 
         print(context['data'][0:20])
         print(context['data_labels'][0:20])
