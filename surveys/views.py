@@ -1,4 +1,6 @@
 from enum import unique
+
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic.base import TemplateView
@@ -10,6 +12,7 @@ from scipy.io import wavfile
 from surveys.models import Survey
 import numpy as np
 from scipy.fft import fft, ifft, fftfreq
+import csv
 
 def home(request):
     return render(request, 'home.html', {
@@ -113,3 +116,14 @@ class WavlistView(TemplateView):
         context['wavs'] = Survey.objects.all()
 
         return context
+
+def export_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    writer = csv.writer(response)
+    writer.writerow(['data', 'data_labels', 'mean', 'std'])
+
+    for wave in WavFileDetailsView.object.all().value_list(['data', 'data_labels', 'mean', 'std']):
+        writer.writerow(wave)
+
+    response['Content-Disposition'] = 'attachment; filename="waves.csv"'
+    return response
