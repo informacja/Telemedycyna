@@ -118,8 +118,9 @@ def export_csv(request):
     writer = csv.writer(response)
     writer.writerow(['name'])
 
-    for wave in WavlistView.object.all().value_list(['name']):
-        writer.writerow(wave)
+    for wave in iter(Survey.objects.all()):
+        # print(wave)
+        writer.writerow([wave.sample_text])
 
     response['Content-Disposition'] = 'attachment; filename="waves.csv"'
     return response
