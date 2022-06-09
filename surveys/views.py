@@ -116,9 +116,9 @@ class WavlistView(TemplateView):
 def export_csv(request):
     response = HttpResponse(content_type='text/csv')
     writer = csv.writer(response)
-    writer.writerow(['data', 'data_labels', 'mean', 'std'])
+    writer.writerow(['name'])
 
-    for wave in WavFileDetailsView.object.all().value_list(['data', 'data_labels', 'mean', 'std']):
+    for wave in WavlistView.object.all().value_list(['name']):
         writer.writerow(wave)
 
     response['Content-Disposition'] = 'attachment; filename="waves.csv"'
