@@ -1,5 +1,10 @@
+{% extends "szablon.html" %}
+
+
+{% block zawartosc %}
 <form method="post" class="card-panel-simple" enctype="multipart/form-data">
 {% csrf_token %}   
 {{form}}
 <input class="btn btn-primary rounded-0" type="submit" value="OK"/>
 </form>
+{% endblock %}
