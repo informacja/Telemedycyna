@@ -12,7 +12,7 @@ urlpatterns = [
     path(r'survey_stats/', SurveyStatsView.as_view(), name='survey_stats'),
     path(r'wav_details/<int:wav_pk>', WavFileDetailsView.as_view(), name='wav_details'),
     path(r'wav_list', WavlistView.as_view(), name='wav_list'),
-    path('export', export_csv, name='export_waves').
+    path(r'export', export_csv, name='export_waves'),
 ]
 
 
