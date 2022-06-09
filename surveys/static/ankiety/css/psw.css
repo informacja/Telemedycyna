@@ -1,0 +1,77 @@
+li::marker {
+  content: "";
+}
+
+ ul.main>li {
+  counter-increment: li;
+  display: list-item;
+}
+
+ ul.main>li::marker {
+  display: list-item;
+  content: counter(li) " ";
+  /*color: lightsalmon;*/
+   color: #4671C6;
+  font-weight: bold;
+}
+
+body {
+  counter-reset: li;
+  /*line-height: 1.4;*/
+  /*font-family: system-ui;*/
+  /*margin: 3rem;*/
+}
+.recBtn{
+
+/* Auto layout */
+
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 15px 100px;
+
+position: relative;
+width: 277px;
+height: 67px;
+
+background: #4671C6;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 44px;
+  cursor: pointer;
+}
+
+.btTxt{
+  /* Dalej */
+position: static;
+left: 36.1%;
+right: 36.1%;
+top: 22.39%;
+bottom: 22.39%;
+
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 37px;
+/* identical to box height */
+
+display: flex;
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 0;
+flex-grow: 0;
+margin: 0px 0px;
+}
+.errorlist {
+  color:red;
+}
+.flex-div {
+    top:20% !important;
+}

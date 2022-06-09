@@ -1,0 +1,39 @@
+a{
+    /*color:red !important;*/
+}
+.fa-youtube{
+    color:red !important;
+}
+
+label {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 60px;
+
+    color: #4671C6;
+}
+
+h2{
+    font-weight: 500;
+}
+h2 span{
+    font-weight: 700;
+}
+/* HIDE RADIO */
+/*[type=radio] {*/
+/*  position: absolute;*/
+/*  opacity: 0;*/
+/*  width: 0;*/
+/*  height: 0;*/
+/*}*/
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
