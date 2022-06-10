@@ -6,11 +6,37 @@
 <a href="{% url 'survey_fill' %}" class="btn btn-outline-primary">Dodaj nowy plik</a></li>
 
 
-{% for i in wavs %}
+<!--{% for i in wavs %}-->
 
-<li class="list-group-item">Title: {{i.sample_text}}    
-     <a href="{% url 'wav_details' i.pk %}" class="btn btn-outline-primary">Pokaż plik</a></li> 
+<!--<li class="list-group-item">Title: {{i.sample_text}}    -->
+<!--     <a href="{% url 'wav_details' i.pk %}" class="btn btn-outline-primary">Pokaż plik</a></li> -->
+
+<!--{% endfor %}-->
+
+
+{% for wav in page_obj %}
+    {# Each "contact" is a Contact model object. #}
+<!--    {{ wav.sample_text|upper }}<br>-->
+    <li class="list-group-item">Title: {{wav.sample_text}}
+     <a href="{% url 'wav_details' wav.pk %}" class="btn btn-outline-primary">Pokaż plik</a></li>
 
 {% endfor %}
 
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}

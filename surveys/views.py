@@ -13,6 +13,9 @@ from surveys.models import Survey
 import numpy as np
 from scipy.fft import fft, ifft, fftfreq
 import csv
+from django.views.generic import ListView
+from django.core.paginator import Paginator
+from django.shortcuts import render
 
 def home(request):
     return render(request, 'home.html', {
@@ -106,14 +109,24 @@ class WavFileDetailsView(TemplateView):
         print()
         return context
 
-class WavlistView(TemplateView):
+class WavlistView(ListView):
     template_name = "wav_list.html"
-
+    paginate_by = 2
+    model = Survey
+    
     def get_context_data(self, **kwargs):
         context = super(WavlistView, self).get_context_data(**kwargs)
         context['wavs'] = Survey.objects.all()
 
         return context
+
+def listing(request):
+    contact_list = Contact.objects.all()
+    paginator = Paginator(contact_list, 25)  # Show 25 contacts per page.
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'wav_list.html', {'page_obj': page_obj})
 
 def export_csv(request):
     response = HttpResponse(content_type='text/csv')
