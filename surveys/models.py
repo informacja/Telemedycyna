@@ -22,3 +22,5 @@ class Diagnosis(models.Model):
 
     # jak wyświetlić po imieniu w adminie
     # walidacja
+
+wave = Survey.objects.filter(wav_file=True)
