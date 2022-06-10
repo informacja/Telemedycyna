@@ -7,6 +7,7 @@ from .views import export_csv
 
 urlpatterns = [
     path('', views.home),
+    path('authors', views.authors),
     path(r'survey_fill/', SurveyFillView.as_view(), name='survey_fill'),
     path(r'filled_success/', SurveyFilledView.as_view(), name='filled_success'),
     path(r'survey_stats/', SurveyStatsView.as_view(), name='survey_stats'),

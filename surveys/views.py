@@ -17,7 +17,9 @@ import csv
 def home(request):
     return render(request, 'home.html', {
     })
-
+def authors(request):
+    return render(request, 'authors.html', {
+    })
 class SurveyFillView(TemplateView, FormView):
     success_url = reverse_lazy('filled_success')
     template_name = "survey_form.html"
